@@ -1,0 +1,18 @@
+function CheckSeaBeastTrial()
+    if not WS.Map:FindFirstChild("FishmanTrial") then
+        chodienspamhirimixienchetcuchungmay = nil
+        return nil
+    end
+    if WO.Locations:FindFirstChild("Trial of Water") then
+        FishmanTrial = WO.Locations:FindFirstChild("Trial of Water")
+    end
+    if FishmanTrial then
+        for r, v in next, game:GetService("Workspace").SeaBeasts:GetChildren() do
+            if string.find(v.Name, "SeaBeast") and v:FindFirstChild("HumanoidRootPart") and (v.HumanoidRootPart.Position - FishmanTrial.Position).Magnitude <= 1500 then
+                if v.Health.Value > 0 then
+                    return v
+                end
+            end
+        end
+    end
+end
